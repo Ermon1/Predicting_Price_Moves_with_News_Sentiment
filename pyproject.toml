@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "predicting_price_moves"
+version = "0.1.0"
+description = "Sentiment analysis → stock price movement correlation pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+
+# Explicitly declare the package
+[tool.setuptools]
+packages = ["src"]

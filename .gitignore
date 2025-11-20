@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+
+# Data
+data/
+datasets/
+*.csv
+*.pkl
+*.h5
+*.parquet
+
+# Logs
+logs/
+*.log
+
+# IDE / Editor
+.vscode/
+*.swp
+*.swo
+*.egg-info/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environment
+venv/
+.env/
+
+# Build / packaging
+*.egg-info/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/
