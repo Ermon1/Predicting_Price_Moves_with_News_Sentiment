@@ -1,0 +1,6 @@
+# config/features.yaml
+redis:
+  enabled: false
+
+cache:
+  size: 100

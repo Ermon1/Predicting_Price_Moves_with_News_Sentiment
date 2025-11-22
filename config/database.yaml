@@ -1,0 +1,4 @@
+# Simple test database config
+host: "localhost"
+port: 5432
+name: "financial_data"
