@@ -53,3 +53,30 @@ dist/
 data/
 
 .env 
+# Environment variables
+.env
+log/
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data
+data/
+*.csv
+*.parquet
+*.feather
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
