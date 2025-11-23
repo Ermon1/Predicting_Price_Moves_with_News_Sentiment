@@ -1,0 +1,33 @@
+# ALL PATHS CONFIGURATION - ZERO HARDCODING
+data_sources:
+  # Input data paths
+  inputs:
+    financial_news: "datasets/fnspid/raw_analyst_ratings.csv"
+    stock_prices_directory: "datasets/yfinance_data"
+    available_stocks: ["AAPL", "AMZN", "GOOG", "META", "MSFT", "NVDA"]
+
+  # Output data paths
+  outputs:
+    base_directory: "data/processed"
+    task1: "task1_processed.csv"
+    task2: "task2_technical.csv"
+    task3: "task3_final.csv"
+
+  # Analysis parameters
+  parameters:
+    task1:
+      date_column: "date"
+      text_columns: ["headline"]
+      categorical_columns: ["publisher", "stock"]
+
+    task2:
+      stock_date_column: "Date"
+      price_columns: ["Open", "High", "Low", "Close", "Volume"]
+      lookback_days: 1
+      lookahead_days: 1
+
+    task3:
+      sentiment_method: "textblob"
+      correlation_methods: ["pearson", "spearman"]
+
+version: "3.0"

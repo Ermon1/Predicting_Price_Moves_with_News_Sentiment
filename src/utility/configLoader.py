@@ -1,27 +1,25 @@
-# src/utility/config_loader.py
 import yaml
 from pathlib import Path
 from typing import Any, Dict
 
 
 class ConfigLoader:
-    """YAML configuration loader for config/ folder in project root"""
+    """Industry-grade configuration loader - DO NOT MODIFY IN TASKS"""
 
     def __init__(self):
-        # Always use config/ in project root
         current_file = Path(__file__).resolve()
-        project_root = current_file.parent.parent.parent  # Go up to project root
+        project_root = current_file.parent.parent.parent
         self.config_base_path = project_root / "config"
 
     def load_config(self, config_name: str) -> Dict[str, Any]:
         """
-        Load configuration from YAML file in config/ folder
+        Load entire configuration from YAML file
 
         Args:
-            config_name: Name of the config file (without .yaml extension)
+            config_name: Name of config file without .yaml extension
 
         Returns:
-            Configuration dictionary
+            Dictionary with all configuration data
         """
         config_file_path = self.config_base_path / f"{config_name}.yaml"
 
@@ -33,32 +31,57 @@ class ConfigLoader:
 
         return config
 
-    def get(self, config_name: str, key: str, default: Any = None) -> Any:
+    def get_task_config(self, config_name: str, task: str) -> Dict[str, Any]:
         """
-        Get specific configuration value using dot notation
+        Get merged configuration for specific task
+        Returns: base_processing + task_specific[task] merged together
 
         Args:
-            config_name: Name of the config file
-            key: Dot notation key (e.g., 'database.host')
-            default: Default value if key not found
+            config_name: Name of config file (e.g., 'processing_pipeline')
+            task: Task name (e.g., 'task1', 'task2', 'task3')
 
         Returns:
-            Configuration value
+            Dictionary with merged configuration for the task
         """
         config = self.load_config(config_name)
 
-        # Navigate using dot notation
-        keys = key.split(".")
-        current = config
+        # Get base settings that all tasks share
+        base_settings = config.get("base_processing", {})
 
-        for k in keys:
-            if isinstance(current, dict) and k in current:
-                current = current[k]
+        # Get task-specific settings that override base settings
+        task_specific = config.get("task_specific", {}).get(task, {})
+
+        # Merge them (task-specific settings override base settings)
+        merged_config = self._deep_merge(base_settings, task_specific)
+
+        print(f"✓ Loaded configuration for: {task}")
+        return merged_config
+
+    def _deep_merge(self, base: Dict, override: Dict) -> Dict:
+        """
+        Deep merge two dictionaries - override values take priority
+
+        Args:
+            base: Base dictionary with default settings
+            override: Override dictionary with task-specific settings
+
+        Returns:
+            Merged dictionary
+        """
+        result = base.copy()
+        for key, value in override.items():
+            if (
+                key in result
+                and isinstance(result[key], dict)
+                and isinstance(value, dict)
+            ):
+                # Recursively merge nested dictionaries
+                result[key] = self._deep_merge(result[key], value)
             else:
-                return default
+                # Override the value
+                result[key] = value
+        return result
 
-        return current
 
-
-# Singleton instance
+# Singleton instance - Import this in all tasks
 config_loader = ConfigLoader()

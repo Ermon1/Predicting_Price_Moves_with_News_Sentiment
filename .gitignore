@@ -13,8 +13,7 @@ env/
 # Jupyter / notebooks
 .ipynb_checkpoints/
 
-# Data
-data/
+
 datasets/
 *.csv
 *.pkl
@@ -49,8 +48,6 @@ dist/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data
-data/
 
 .env 
 # Environment variables
@@ -70,7 +67,7 @@ __pycache__/
 *.ipynb
 
 # Data
-data/
+datas/
 *.csv
 *.parquet
 *.feather

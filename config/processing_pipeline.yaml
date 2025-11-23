@@ -1,0 +1,26 @@
+# BASE PROCESSING CONFIG - Tasks will ADD to their sections only
+base_processing:
+  text_cleaning:
+    remove_special_chars: true
+    lowercase: true
+    remove_numbers: false
+    min_headline_length: 5
+    max_headline_length: 200
+
+  date_processing:
+    timezone: "UTC-4"
+    market_hours:
+      start: "09:30"
+      end: "16:00"
+
+  validation:
+    required_columns: ["headline", "publisher", "date", "stock"]
+    allow_duplicates: false
+
+# TASK CONFIGURATION SECTIONS - Each task MODIFIES ONLY THEIR SECTION
+task_specific:
+  task1: {} # Task 1 will populate this
+  task2: {} # Task 2 will populate this
+  task3: {} # Task 3 will populate this
+
+version: "1.0-main"
