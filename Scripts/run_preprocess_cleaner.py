@@ -1,18 +1,19 @@
+#!/usr/bin/env python3
 from src.analysis.preprocess_cleaner import run_task1_preprocessing
+import pandas as pd
+from pathlib import Path
 
 if __name__ == "__main__":
-    results = run_task1_preprocessing()
+    try:
+        result = run_task1_preprocessing()
 
-    print("🧹 Task-1 Preprocessing Complete")
-    print(f"   Total rows after cleaning: {results['rows']}")
-    print(f"   Unique Publishers: {results['unique_publishers']}")
-    print(f"   Artifacts saved at: {results['artifact_dir']}")
+        print("\n🧹 Task-1 Preprocessing Complete")
+        print(f"   Total rows after cleaning: {result['rows']}")
+        print(f"   Unique Publishers:        {result['unique_publishers']}")
+        print(f"   Artifacts saved at:       {result['artifact_dir']}")
+        print(f"   Cleaned CSV:              {result['cleaned_csv']}")
 
-    # Optionally, show top 5 publishers by frequency
-    import pandas as pd
-    summary_path = f"{results['artifact_dir']}/publisher_summary.csv"
-    summary_df = pd.read_csv(summary_path)
 
-    print("\n🏢 Top 5 Publishers by Frequency:")
-    for idx, row in summary_df.head(5).iterrows():
-        print(f"   {row['publisher_norm']}: {row['count']} articles")
+    except Exception as e:
+        print("\n❌ TASK FAILED")
+        print(e)
