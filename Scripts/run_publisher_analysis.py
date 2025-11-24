@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
-
-from src.analysis.publisher_analysis import run_publisher_analysis
+from src.analysis.publisher_analyzer import run_publisher_analysis
 
 if __name__ == "__main__":
     results = run_publisher_analysis()
