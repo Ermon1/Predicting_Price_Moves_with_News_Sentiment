@@ -2,16 +2,16 @@
 data_sources:
   # Input data paths
   inputs:
-    financial_news: "datasets/fnspid/raw_analyst_ratings.csv"   # Task 3
-    stock_prices_directory: "datasets/yfinance_data"           # Task 2
+    financial_news: "datasets/fnspid/raw_analyst_ratings.csv"
+    stock_prices_directory: "datasets/yfinance_data"
     available_stocks: ["AAPL", "AMZN", "GOOG", "META", "MSFT", "NVDA"]
 
   # Output data paths
   outputs:
     base_directory: "data/processed"
     task1: "task1_processed.csv"
-    task2: "task2_technical.csv"       # NEW: Task 2 output
-    task3: "task3_final.csv"           # NEW: Task 3 output
+    task2: "task2_technical.csv"
+    task3: "task3_final.csv"
 
   # Analysis parameters
   parameters:
@@ -21,17 +21,17 @@ data_sources:
       categorical_columns: ["publisher", "stock"]
 
     task2:
-      stock_date_column: "Date"                                 # Column in raw stock CSVs
-      price_columns: ["Open", "High", "Low", "Close", "Volume"] # Columns used by TA-Lib
-      stock_column: "stock"                                     # NEW: Stock ticker identifier
+      stock_date_column: "Date"
+      price_columns: ["Open", "High", "Low", "Close", "Volume"]
+      stock_column: "stock"
       lookback_days: 1
       lookahead_days: 1
-      output_file: "task2_technical.csv"                        # NEW: Where Task 2 saves processed data
+      output_file: "task2_technical.csv"
 
     task3:
-      sentiment_method: "textblob"                               # Sentiment analysis method
-      correlation_methods: ["pearson", "spearman"]             # Correlation metrics for Task 3
-      news_file: "task1_processed.csv"                         # NEW: Input file from Task 1
-      technical_file: "task2_technical.csv"                    # NEW: Input file from Task 2
+      sentiment_method: "textblob"
+      correlation_methods: ["pearson", "spearman"]
+      news_file: "task1_processed.csv"
+      technical_file: "task2_technical.csv"
 
 version: "3.0"
