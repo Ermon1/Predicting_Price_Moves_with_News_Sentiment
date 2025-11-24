@@ -3,6 +3,7 @@ data_sources:
   # Input data paths
   inputs:
     financial_news: "datasets/fnspid/raw_analyst_ratings.csv"
+    preprocessed_news: "datasets/preprocess_cleaner/financial_news_cleaned.csv"
     stock_prices_directory: "datasets/yfinance_data"
     available_stocks: ["AAPL", "AMZN", "GOOG", "META", "MSFT", "NVDA"]
 
@@ -12,6 +13,7 @@ data_sources:
     task1: "task1_processed.csv"
     task2: "task2_technical.csv"
     task3: "task3_final.csv"
+
 
   # Analysis parameters
   parameters:
