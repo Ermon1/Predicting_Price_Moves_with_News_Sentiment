@@ -32,6 +32,14 @@ data_sources:
       sentiment_method: "textblob"                               # Sentiment analysis method
       correlation_methods: ["pearson", "spearman"]             # Correlation metrics for Task 3
       news_file: "task1_processed.csv"                         # NEW: Input file from Task 1
-      technical_file: "task2_technical.csv"                    # NEW: Input file from Task 2
+      technical_file: "task2_technical.csv"                    # NEW: Input file from Task 
+      stock_date_column: "Date"
+      price_columns: ["Open", "High", "Low", "Close", "Volume"]
+      stock_column: "stock"
+      lookback_days: 1
+      lookahead_days: 1
+      output_file: "task2_technical.csv"
+
+
 
 version: "3.0"
