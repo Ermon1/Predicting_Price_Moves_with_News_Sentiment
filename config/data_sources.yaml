@@ -34,4 +34,5 @@ data_sources:
       news_file: "task1_processed.csv"                         # NEW: Input file from Task 1
       technical_file: "task2_technical.csv"                    # NEW: Input file from Task 2
 
+
 version: "3.0"
